@@ -8,6 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/"
+      }
+    }
+    </script>
 </head>
 <body>
     <div id="lights" class="bg-hyperspeed" aria-hidden="true"></div>
@@ -215,7 +223,7 @@
     <!-- Hidden canvas for capturing photos -->
     <canvas id="captureCanvas" style="display: none;"></canvas>
 
-    <script type="module" src="hyperspeed.js"></script>
+    <script type="module" src="hyperspeed-simple.js"></script>
     <script type="module" src="app.js"></script>
 </body>
 </html>

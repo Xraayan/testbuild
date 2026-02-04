@@ -1,5 +1,5 @@
-import * as THREE from 'https://unpkg.com/three@0.150.1/build/three.module.js';
-import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'https://unpkg.com/postprocessing@6.33.4/build/postprocessing.esm.js';
+import * as THREE from 'three';
+import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'https://cdn.jsdelivr.net/npm/postprocessing@6.33.4/build/index.js';
 
 // Hyperspeed background inspired by provided snippet (converted to vanilla JS)
 
@@ -613,7 +613,7 @@ class App {
     }
     this.container = container;
     this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-    this.renderer.setSize(container.offsetWidth, container.offsetHeight, false);
+    this.renderer.setSize(container.offsetWidth, container.offsetHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.composer = new EffectComposer(this.renderer);
     container.append(this.renderer.domElement);
@@ -759,7 +759,10 @@ class App {
     }
   }
 
-  setSize(width, height, updateStyles) { this.composer.setSize(width, height, updateStyles); }
+  setSize(width, height, updateStyles = true) {
+    this.renderer.setSize(width, height, updateStyles);
+    this.composer.setSize(width, height);
+  }
 
   tick() {
     if (this.disposed || !this) return;
