@@ -141,9 +141,11 @@ class Road {
   createPlane(side, isRoad) {
     const options = this.options;
     const geometry = new THREE.PlaneGeometry(isRoad ? options.roadWidth : options.islandWidth, options.length, 20, 100);
-    const material = new THREE.MeshPhongMaterial({
+    const material = new THREE.MeshStandardMaterial({
       color: isRoad ? options.colors.roadColor : options.colors.islandColor,
-      emissive: isRoad ? 0x1a1a1a : 0x0a0a0a
+      emissive: isRoad ? 0x1a1a1a : 0x0a0a0a,
+      metalness: 0.3,
+      roughness: 0.8
     });
 
     const mesh = new THREE.Mesh(geometry, material);
@@ -170,19 +172,25 @@ class App {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setSize(container.offsetWidth, container.offsetHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setClearColor(0x000000, 1);
-    container.append(this.renderer.domElement);
+    this.renderer.setClearColor(0x000000, 0.95);
+    this.renderer.domElement.style.width = '100%';
+    this.renderer.domElement.style.height = '100%';
+    container.appendChild(this.renderer.domElement);
 
     this.camera = new THREE.PerspectiveCamera(this.options.fov, container.offsetWidth / container.offsetHeight, 0.1, 10000);
     this.camera.position.set(0, 8, -5);
     this.scene = new THREE.Scene();
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     this.scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0x49e2ff, 1, 100);
-    pointLight.position.set(0, 10, 0);
+    const pointLight = new THREE.PointLight(0x49e2ff, 1.5, 200);
+    pointLight.position.set(0, 15, -50);
     this.scene.add(pointLight);
+
+    const pointLight2 = new THREE.PointLight(0xc247ac, 1, 150);
+    pointLight2.position.set(-20, 10, -100);
+    this.scene.add(pointLight2);
 
     this.clock = new THREE.Clock();
     this.disposed = false;

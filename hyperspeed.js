@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'https://cdn.jsdelivr.net/npm/postprocessing@6.33.4/build/index.js';
+import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
 
-// Hyperspeed background inspired by provided snippet (converted to vanilla JS)
+// Hyperspeed background - Full effects with shaders and postprocessing
 
 const defaultOptions = {
   onSpeedUp: () => {},
