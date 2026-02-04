@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="lights" class="bg-hyperspeed" aria-hidden="true"></div>
+
     <div class="app-container">
         <header class="header">
             <div class="logo">
@@ -21,7 +23,7 @@
                     </svg>
                 </div>
                 <div class="logo-text">
-                    <h1>Hardware Diagnostics</h1>
+                    <h1>CAS-E</h1>
                         <span class="version">v1.0.0</span>
                 </div>
             </div>
@@ -213,6 +215,7 @@
     <!-- Hidden canvas for capturing photos -->
     <canvas id="captureCanvas" style="display: none;"></canvas>
 
-    <script src="app.js"></script>
+    <script type="module" src="hyperspeed.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
